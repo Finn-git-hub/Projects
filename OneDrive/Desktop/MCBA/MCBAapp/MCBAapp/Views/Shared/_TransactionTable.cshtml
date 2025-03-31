@@ -1,0 +1,59 @@
+@using X.PagedList
+@using MCBAapp.Models.Enums
+@model IPagedList<Transaction>
+
+<table class="table">
+    <tr>
+        @* <th>@Html.DisplayNameFor(x => x[0].TransactionID)</th> *@
+        <th>@Html.DisplayNameFor(x => x[0].TransactionType)</th>
+        <th>@Html.DisplayNameFor(x => x[0].AccountNumber)</th>
+        <th>@Html.DisplayNameFor(x => x[0].DestinationAccountNumber)</th>
+        <th>@Html.DisplayNameFor(x => x[0].Amount)</th>
+        <th>@Html.DisplayNameFor(x => x[0].Comment)</th>
+        <th>Transaction Time</th>
+    </tr>
+    @foreach(var transaction in Model) {
+        <tr>
+            @* <td>@Html.DisplayFor(x => order.TransactionID)</td> *@
+            <td>
+                @switch (transaction.TransactionType)
+                {
+                    case TransactionType.Deposit:
+                        <text>Deposit</text>
+                        break;
+                    case TransactionType.Withdraw:
+                        <text>Withdraw</text>
+                        break;
+                    case TransactionType.Transfer:
+                        <text>Transfer</text>
+                        break;
+                    case TransactionType.ServiceCharge:
+                        <text>Service Charge</text>
+                        break;
+                    case TransactionType.BillPay:
+                        <text>Bill Pay</text>
+                        break;
+                }
+            </td>
+            <td>@Html.DisplayFor(x => transaction.AccountNumber)</td>
+            <td>@Html.DisplayFor(x => transaction.DestinationAccountNumber)</td>
+            <td style="color: @GetAmountColor(transaction)">@Html.DisplayFor(x => transaction.Amount)</td>
+            <td>@Html.DisplayFor(x => transaction.Comment)</td>
+            <td>@transaction.TransactionTimeUtc.ToLocalTime().ToString("dd/MM/yyyy hh:mm:ss tt")</td>
+        </tr>
+    }
+</table>
+
+@functions {
+
+    private string GetAmountColor(Transaction transaction)
+    {
+        if (transaction.TransactionType == TransactionType.ServiceCharge || transaction.TransactionType == TransactionType.Withdraw || transaction.TransactionType == TransactionType.BillPay ||
+            (transaction.TransactionType == TransactionType.Transfer && !string.IsNullOrEmpty(transaction.DestinationAccountNumber.ToString())))
+        {
+            return "red";
+        }
+        return "green";
+    }
+
+}

@@ -1,0 +1,105 @@
+﻿@model Customer
+@{
+    ViewData["Title"] = "Profile";
+    bool editable = false;
+}
+<style>
+    .form-group {
+        text-align: center;
+        margin-bottom: 15px; /* Adjust as needed */
+    }
+
+    input[type="text"] ,h1 {
+        font-size: 14px; /* Adjust font size as needed */
+        text-align: center;
+    }
+
+    .col-md-4 {
+        margin: auto; /* Center the column */
+        float: none;
+    }
+</style>
+<h1 class="display-4">Profile</h1>
+
+<div class="row">
+    <div class="col-md-4">
+        @if (ViewBag.EditState?.ToString() == "edit")
+        {
+            <form asp-action="Save">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Name" class="control-label">Name</label>
+                    <input asp-for="Name" name="Name" class="form-control" value="@ViewData.Model.Name"/>
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="TFN" class="control-label"></label>
+                    <input asp-for="TFN" class="form-control"/>
+                    <span asp-validation-for="TFN" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Address" class="control-label"></label>
+                    <input asp-for="Address" class="form-control"/>
+                </div>
+                <div class="form-group">
+                    <label asp-for="City" class="control-label"></label>
+                    <input asp-for="City" class="form-control"/>
+                </div>
+                <div class="form-group">
+                    <label asp-for="State" class="control-label"></label>
+                    <input asp-for="State" class="form-control"/>
+                    <span asp-validation-for="State" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Postcode" class="control-label"></label>
+                    <input asp-for="Postcode" class="form-control"/>
+                    <span asp-validation-for="Postcode" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Mobile" class="control-label"></label>
+                    <input asp-for="Mobile" class="form-control"/>
+                    <span asp-validation-for="Mobile" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <a asp-controller="Customer" asp-action="Profile" class="btn btn-dark"> Cancel</a>
+                    <button type="submit" name="Save" class="btn btn-primary">Save</button>
+                </div>
+            </form>
+        }
+        else
+        {
+            <form asp-action="Profile">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Name" class="control-label">Name: @Model.Name</label>
+                </div>
+                <div class="form-group">
+                    <label asp-for="TFN" class="control-label">TFN: @Model.TFN</label>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Address" class="control-label">Address: @Model.Address</label>
+                </div>
+                <div class="form-group">
+                    <label asp-for="City" class="control-label">City: @Model.City</label>
+                </div>
+                <div class="form-group">
+                    <label asp-for="State" class="control-label">State: @Model.State</label>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Postcode" class="control-label">Postcode: @Model.Postcode</label>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Mobile" class="control-label">Mobile: @Model.Mobile</label>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-primary" asp-controller="Login" asp-action="ResetPassword">Reset Password</button>
+                    <button type="submit" class="btn btn-primary" asp-controller="Customer" asp-action="Profile" asp-route-editState="edit">edit</button>
+                </div>
+            </form>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}

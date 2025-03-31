@@ -1,0 +1,45 @@
+@model Customer
+@{
+    ViewData["Title"] = "Accounts";
+    var buttonType = Context.Session.GetString("buttonType");
+}
+
+<div>
+    <div class="text-center">
+        @switch(buttonType)
+        {
+            case "D":
+                <h1 class="display-4">Deposit</h1>
+                break;
+            case "W":
+                <h1 class="display-4">Withdraw</h1>
+                break;
+            case "T":
+                <h1 class="display-4">Transfer</h1>
+                break;
+            case "S":
+                <h1 class="display-4">Statement</h1>
+                break;
+            default:
+                <h1 class="display-4">Welcome, @Model.Name</h1>
+                break;
+        }
+    </div>
+    
+    @if (buttonType != "default")
+    {
+        <h3>Your Accounts</h3>
+        <partial name="_AccountTable" for="Accounts"/>
+        <a asp-action="Index" class="btn btn-dark">Back</a>
+    }
+    else
+    {
+        // A button list to select the type of Operation
+        <div class="btn-group" style="display: flex; justify-content: center; align-items: center" role="group" aria-label="Basic example">
+            <a class="btn btn-primary" asp-controller="Customer" asp-action="Index" asp-route-buttonType='D'> Deposit </a>
+            <a class="btn btn-primary" asp-controller="Customer" asp-action="Index" asp-route-buttonType='W'> Withdraw </a>
+            <a class="btn btn-primary" asp-controller="Customer" asp-action="Index" asp-route-buttonType='T'> Transfer </a>
+            <a class="btn btn-primary" asp-controller="Customer" asp-action="Index" asp-route-buttonType='S'> Statement </a>
+        </div>
+    }
+</div>

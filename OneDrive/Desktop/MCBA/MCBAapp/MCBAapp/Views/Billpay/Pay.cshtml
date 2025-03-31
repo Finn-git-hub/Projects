@@ -1,0 +1,35 @@
+@using MCBAapp.Models.Enums
+@model BillPay
+@{
+    ViewData["Title"] = "Pay";
+}
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Account.AccountNumber" class="control-label">Account Number: @Model.Account.AccountNumber</label>
+            </div>
+            <div class="form-group">
+                <label asp-for="Amount" class="control-label">Amount: @Model.Amount</label>
+            </div>
+            <div class="form-group">
+                <label asp-for="Payee.Name" class="control-label">Payee Name: @Model.Payee.Name</label>
+            </div>
+            <div class="form-group">
+                <label asp-for="Payee.PayeeID" class="control-label">Payee ID: @Model.Payee.PayeeID</label>
+            </div>
+            <div class="form-group">
+                <label asp-for="ScheduleTimeUtc" class="control-label">Due Date: @Model.ScheduleTimeUtc.ToLocalTime()</label>
+            </div>
+            <div class="form-group">
+                <label asp-for="BillType" class="control-label">Bill Type: @(Model.BillType==BillpayType.OneOff?"OneOff":"Monthly")</label>
+            </div>
+            <div class="form-group">
+                <a class="btn btn-primary" asp-controller="Billpay" asp-action="BillList">Back</a>
+                <a class="btn btn-primary" asp-controller="Billpay" asp-action="PayBill" asp-route-id=@Model.BillPayID>Pay</a>
+                @Html.ValidationMessage("Pay", new { @class = "text-danger" })
+            </div>
+        </form>
+    </div>
+</div>

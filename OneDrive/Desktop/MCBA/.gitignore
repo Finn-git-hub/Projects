@@ -1,0 +1,18 @@
+# Ignore all files in the obj directory
+MCBAapp/MCBAapp/obj/
+MCBAapp/AdminAPI/obj/
+MCBAapp/AdminPortal/obj/
+
+# Ignore all files in the bin directory
+MCBAapp/MCBAapp/bin/
+MCBAapp/AdminAPI/bin/
+MCBAapp/AdminPortal/bin/
+
+# Ignore all .cache files
+*.cache
+
+# Ignore all files that might appear in the root directory
+# with .suo or .user extensions
+*.suo
+*.user
+git

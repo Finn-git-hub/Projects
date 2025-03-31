@@ -1,0 +1,22 @@
+@using X.PagedList
+@using X.PagedList.Mvc.Core
+@model IPagedList<Transaction>
+@{
+    ViewData["Title"] = "View Orders";
+    var account = (Account) ViewBag.Account;
+}
+
+<div>
+    <h1>Transaction history for account @account.AccountNumber</h1>
+    <partial name="_TransactionTable" model="Model"/>
+    
+    @Html.PagedListPager(Model, page => Url.Action("Statement", new { page }),
+        new PagedListRenderOptions {
+            LiElementClasses = new[] { "page-item" },
+            PageClasses = new[] { "page-link" }
+        })
+</div>
+
+<div>
+    <a asp-action="Index" asp-route-buttonType='S' class="btn btn-dark">Back to Accounts Selection</a>
+</div>

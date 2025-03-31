@@ -1,0 +1,64 @@
+﻿@using MCBAapp.Models.Enums
+@model IEnumerable<BillPay>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="CreateBill">Create new bill</a>
+</p>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.BillPayID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PayeeID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AccountNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Amount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ScheduleTimeUtc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BillType)
+        </th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach(var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.BillPayID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PayeeID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AccountNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Amount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ScheduleTimeUtc)
+            </td>
+            <td>
+                <p>@(item.BillType==BillpayType.OneOff?"OneOff":"Monthly")</p>
+            </td>
+            <td>
+                <a type="submit" asp-controller="Billpay" asp-action="Pay" asp-route-id="@item.BillPayID">Pay now</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

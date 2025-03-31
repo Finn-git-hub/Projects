@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MCBAapp", "MCBAapp\MCBAapp.csproj", "{7F1BE8C8-54FE-4EF7-A757-383ED5E5AA64}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdminAPI", "AdminAPI\AdminAPI.csproj", "{683E1B03-0356-459F-979D-8CE3560E83F6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdminPortal", "AdminPortal\AdminPortal.csproj", "{6E455461-1B1F-488B-9633-0F0B9E027386}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7F1BE8C8-54FE-4EF7-A757-383ED5E5AA64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F1BE8C8-54FE-4EF7-A757-383ED5E5AA64}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F1BE8C8-54FE-4EF7-A757-383ED5E5AA64}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F1BE8C8-54FE-4EF7-A757-383ED5E5AA64}.Release|Any CPU.Build.0 = Release|Any CPU
+		{683E1B03-0356-459F-979D-8CE3560E83F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{683E1B03-0356-459F-979D-8CE3560E83F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{683E1B03-0356-459F-979D-8CE3560E83F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{683E1B03-0356-459F-979D-8CE3560E83F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E455461-1B1F-488B-9633-0F0B9E027386}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E455461-1B1F-488B-9633-0F0B9E027386}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E455461-1B1F-488B-9633-0F0B9E027386}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E455461-1B1F-488B-9633-0F0B9E027386}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

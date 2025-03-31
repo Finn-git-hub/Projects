@@ -1,0 +1,45 @@
+@using MCBAapp.Models
+@model IEnumerable<MCBAapp.Models.Customer>
+@{
+    ViewData["Title"] = "Customers";
+}
+
+<h1>Customers</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CustomerID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-customerID="@item.CustomerID">Edit</a> | 
+                    @if(item.IsLocked)
+                    {
+                        <a asp-action="Lock" asp-route-customerID="@item.CustomerID">Unlock</a>
+                    }
+                    else
+                    {
+                        <a asp-action="Lock" asp-route-customerID="@item.CustomerID">Lock</a>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
