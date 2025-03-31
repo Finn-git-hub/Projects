@@ -91,6 +91,11 @@ include_once "Stripe/stripe-php-12.4.0/config.php";
                 <input type="hidden" name="quantity" id="stripe-quantity" value=1>
                 <button type="submit">Checkout</button>
             </form>
+            <div>
+                <form action ="<?php echo STRIPE_URL; ?>" method="post">
+                
+            </form>
+            </div>
         </div>
     </div>
     <footer id="footer"
